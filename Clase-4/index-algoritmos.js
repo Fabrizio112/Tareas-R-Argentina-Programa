@@ -98,4 +98,4 @@ Desafío de programación #50. Create a function that will receive n as argument
 Desafío de programación #51. Find the frequency of characters inside a string. Return the result as an array of objects. Each object has 2 fields: character and number of occurrences.
 Desafío de programación #52. Calculate Fibonacci(500) with high precision (all decimals)
 Desafío de programación #53. Calculate 70! with high precision (all decimals)
-/*
+*/
