@@ -6,3 +6,24 @@
 // Y va a cambiar el <h1> para decir "Bienvenido, nombreDeUsuario"!
 
 
+let $botonEnviar = document.querySelector("#boton");
+$botonEnviar.onclick = function () {
+    let primerNombreDelUsuario = document.querySelector("#firstname-user").value;
+    let segundoNombreDelUsuario = document.querySelector("#secondname-user").value;
+    let apellidoDelUsuario = document.querySelector("#surname-user").value;
+    let edadDelUsuario = Number(document.querySelector("#age-user").value);
+    let $titulo = document.querySelector("h1");
+    let $contenedor = document.querySelector(".container");
+    document.querySelector("form").style.display = "none";
+    $titulo.textContent = `Bienvenido! ${primerNombreDelUsuario} ${segundoNombreDelUsuario} ${apellidoDelUsuario} de ${edadDelUsuario} años de edad`;
+    $contenedor.style.display = "flex";
+    $contenedor.style.justifyContent = "center";
+    $contenedor.style.alignItems = "center";
+    $titulo.style.width = "100%";
+    $titulo.style.height = "100%";
+    $titulo.style.textAlign = "center";
+
+    return false;
+
+}
+
