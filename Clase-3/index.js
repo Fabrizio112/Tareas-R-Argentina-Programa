@@ -77,4 +77,4 @@ function dejarEntrarAlBarONo() {
     }
 }
 
-dejarEntrarAlBarONo();
+/* dejarEntrarAlBarONo(); */
