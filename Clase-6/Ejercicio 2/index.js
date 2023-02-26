@@ -104,11 +104,4 @@ function salarioMensualPromedio(a) {
     promedioMensual = contadorMensual / a.length;
     return promedioMensual;
 }
-function noTenerEnCuentaInputsVacios(iteracionesConLosInputs, $valorInputs) {
-    /* for (let i = iteracionesConLosInputs; i > 0; i--) {
-        if (Number($valorInputs[i].value) == 0) {
-            $valorInputs[i].className = "inputNoTomadoEnCuenta";
-        }
-    } */
-    console.log($valorInputs)
-}
+

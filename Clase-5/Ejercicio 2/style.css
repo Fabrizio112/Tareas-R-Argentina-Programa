@@ -13,8 +13,70 @@ body {
 .container {
     height: auto;
     width: 700px;
-    background-color: chartreuse;
+    background-color: rgb(83, 185, 199);
     margin: 1rem auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border: 2px solid black;
+}
+
+.container h1 {
+    text-align: center;
+    text-transform: uppercase;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 20px 0;
+    text-decoration: underline;
+}
+
+.container #cantidad-de-clases-totales {
+    width: 100%;
+    margin-bottom: 2rem;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+.clase-de-argentina-programa {
+    display: flex;
+    flex-direction: column;
+}
+
+.cuantas-clases {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 1rem;
+    text-align: center;
+}
+
+.cuantas-clases #cuantas-clases__label {
+    text-transform: capitalize;
+}
+
+.cuantas-clases #clases {
+    padding: 1rem 10rem;
+    margin: 2rem 0;
+    text-align: center;
+    border: 3px solid black;
+    font-size: 30px;
+}
+
+.cuantas-clases #clases:hover {
+    background-color: black;
+    border: 3px solid white;
+    color: white;
+}
+
+.cuantas-clases #calcular {
+    padding: 0.5rem 3rem;
+    border-radius: 20px;
+    border: none;
+    transition: 0.3s ease-in-out;
+}
+
+.cuantas-clases #calcular:hover {
+    transform: scale(1.2);
 }
 
 .contenedor-clases {
@@ -23,8 +85,35 @@ body {
 
 .botones {
     display: none;
+    padding: 3rem;
+}
+
+.botones button {
+    padding: 0.4rem 1.2rem;
+    border: 1 px solid black;
+    border-radius: 12px;
+    text-transform: uppercase;
+    font-family: sans-serif;
+    background: linear-gradient(#2193b0, #6dd5ed);
+    transition: 0.2s ease-in-out;
+}
+
+.botones button:hover {
+    cursor: pointer;
+    transform: translateY(-2px) scale(1.1);
 }
 
 #resultado {
     display: none;
+    padding: 2rem;
+    background: black;
+    color: white;
+    margin: 1.4rem 0;
+    border: 4px solid white;
+    font-family: monospace;
+}
+
+#resultado strong {
+    font-size: 12px;
+    letter-spacing: 1px;
 }
