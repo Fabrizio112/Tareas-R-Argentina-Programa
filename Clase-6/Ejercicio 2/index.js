@@ -26,7 +26,7 @@ function agregarInputsParaIngresarSalario(i) {
     let nuevoDiv = document.createElement("div");
     nuevoDiv.className = `minibox`;
     let nuevoLabel = document.createElement("label");
-    let nuevoLabelTexto = document.createTextNode(`Ingrese su salario Anual Persona ${i + 1}`);
+    let nuevoLabelTexto = document.createTextNode(`Ingrese su salario Anual Persona ${i + 1} : `);
     nuevoLabel.appendChild(nuevoLabelTexto);
     let nuevoInput = document.createElement("input");
     nuevoInput.type = "number";
@@ -104,11 +104,4 @@ function salarioMensualPromedio(a) {
     promedioMensual = contadorMensual / a.length;
     return promedioMensual;
 }
-function noTenerEnCuentaInputsVacios(iteracionesConLosInputs, $valorInputs) {
-    /* for (let i = iteracionesConLosInputs; i > 0; i--) {
-        if (Number($valorInputs[i].value) == 0) {
-            $valorInputs[i].className = "inputNoTomadoEnCuenta";
-        }
-    } */
-    console.log($valorInputs)
-}
+

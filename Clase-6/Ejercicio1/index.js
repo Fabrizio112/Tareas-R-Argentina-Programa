@@ -17,9 +17,10 @@ $botonSiguiente.onclick = function () {
     crearIntegrantesDeLaFamilia(cantidadDePersonasEnElGrupoFamilia);
     document.querySelector("#botones").style.display = "inline-block";
     document.querySelector("#reset").style.display = "inline-block";
-    document.querySelector("#entrada-personas").style.display = "block";
-    $botonCalcularEdades.style.display = "inline-block";
-    $botonEmpezarDeNuevo.style.display = "inline-block";
+    aparecerEntradaDePersonas();
+    aparecerBotonDeCalcular();
+    aparecerBotonEmpezarDeNuevo();
+    ocultarPartePrincipalDelPrograma();
     return false;
 }
 
@@ -62,7 +63,7 @@ $botonCalcularEdades.onclick = function () {
     document.querySelector("#resultado").style.display = "block";
     $botonCalcularEdades.style.display = "none";
     document.querySelector("#resultado").style.display = "block";
-
+    ocultarEntradaDePersonas();
     return false;
 }
 
@@ -103,6 +104,41 @@ function promedioDelGrupo(a) {
 $botonEmpezarDeNuevo.onclick = function () {
     document.querySelector("#resultado").style.display = "none";
     document.querySelector("#entrada-personas").style.display = "none";
-    $botonEmpezarDeNuevo.style.display = "none";
+    ocultarBotonEmpezarDeNuevo();
+    aparecerPartePrincipalDelPrograma();
+    ocularBotonDeCalcular();
     return false;
+}
+
+let $labelPersonas = document.querySelector("#label-personas");
+let $inputCantidadDeIntegrantes = document.querySelector("#cantidad-familia");
+
+function ocultarPartePrincipalDelPrograma() {
+    $botonSiguiente.style.display = "none";
+    $inputCantidadDeIntegrantes.style.display = "none";
+    $labelPersonas.style.display = "none";
+}
+function aparecerPartePrincipalDelPrograma() {
+    $botonSiguiente.style.display = "block";
+    $inputCantidadDeIntegrantes.style.display = "block";
+    $labelPersonas.style.display = "block";
+}
+
+function ocularBotonDeCalcular() {
+    $botonCalcularEdades.style.display = "none";
+}
+function aparecerBotonDeCalcular() {
+    $botonCalcularEdades.style.display = "inline-block";
+}
+function ocultarBotonEmpezarDeNuevo() {
+    $botonEmpezarDeNuevo.style.display = "none";
+}
+function aparecerBotonEmpezarDeNuevo() {
+    $botonEmpezarDeNuevo.style.display = "inline-block";
+}
+function aparecerEntradaDePersonas() {
+    document.querySelector("#entrada-personas").style.display = "block";
+}
+function ocultarEntradaDePersonas() {
+    document.querySelector("#entrada-personas").style.display = "none";
 }

@@ -10,28 +10,30 @@
 </head>
 
 <body>
-    <form id="container">
-        <h1>Calcular edades en un grupo Familiar</h1>
-        <label for="">Cuantas personas hay en tu grupo familiar?</label>
-        <input type="number" id="cantidad-familia">
-        <button id="calcular-familia">Siguiente</button>
-        <br>
+    <div class="container">
+        <form id="container">
+            <h1>Calcular edades en un grupo Familiar</h1>
+            <label for="" id="label-personas">Cuantas personas hay en tu grupo familiar?</label>
+            <input type="number" id="cantidad-familia">
+            <button id="calcular-familia">Siguiente</button>
+            <br>
 
 
-        <div id="entrada-personas">
+            <div id="entrada-personas">
 
-        </div>
+            </div>
+            <div id="resultado" class="invisible">
+                <p id="mayor"></p>
+                <p id="menor"></p>
+                <p id="promedio"></p>
+            </div>
+            <div id="botones" class="invisible">
+                <button id="calcular-edad">Calcular</button>
+                <button type="reset" id="reset" class="invisible">Empezar de Nuevo</button>
+            </div>
+        </form>
 
-        <div id="botones" class="invisible">
-            <button id="calcular-edad">Calcular</button>
-        </div>
-        <div id="resultado" class="invisible">
-            <p id="mayor"></p>
-            <p id="menor"></p>
-            <p id="promedio"></p>
-        </div>
-        <button type="reset" id="reset" class="invisible">Empezar de Nuevo</button>
-    </form>
+    </div>
     <script src="index.js"></script>
 </body>
 
