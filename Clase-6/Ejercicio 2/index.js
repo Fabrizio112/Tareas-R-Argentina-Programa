@@ -26,7 +26,7 @@ function agregarInputsParaIngresarSalario(i) {
     let nuevoDiv = document.createElement("div");
     nuevoDiv.className = `minibox`;
     let nuevoLabel = document.createElement("label");
-    let nuevoLabelTexto = document.createTextNode(`Ingrese su salario Anual Persona ${i + 1}`);
+    let nuevoLabelTexto = document.createTextNode(`Ingrese su salario Anual Persona ${i + 1} : `);
     nuevoLabel.appendChild(nuevoLabelTexto);
     let nuevoInput = document.createElement("input");
     nuevoInput.type = "number";
