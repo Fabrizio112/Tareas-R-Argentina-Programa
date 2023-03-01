@@ -15,8 +15,7 @@ $botonSiguiente.onclick = function () {
     let cantidadDePersonasEnElGrupoFamilia = Number(document.querySelector("#cantidad-familia").value);
     borrarIntegranteDeLaFamilia(cantidadDePersonasEnElGrupoFamilia);
     crearIntegrantesDeLaFamilia(cantidadDePersonasEnElGrupoFamilia);
-    document.querySelector("#botones").style.display = "inline-block";
-    document.querySelector("#reset").style.display = "inline-block";
+    aparecerContenedorBotones()
     aparecerEntradaDePersonas();
     aparecerBotonDeCalcular();
     aparecerBotonEmpezarDeNuevo();
@@ -39,8 +38,6 @@ function crearIntegrantesDeLaFamilia(a) {
         document.querySelector("#entrada-personas").appendChild(nuevoDiv);
     }
 }
-
-
 function borrarIntegranteDeLaFamilia() {
     let contenedorDeLosIntegrantesDeLaFamilia = document.querySelectorAll(".contenedor-de-personas");
     for (let i = 0; i < contenedorDeLosIntegrantesDeLaFamilia.length; i++) {
@@ -49,26 +46,21 @@ function borrarIntegranteDeLaFamilia() {
 }
 
 
-let valoresDeLosInputsDeLasEdades = [];
-
 
 $botonCalcularEdades.onclick = function () {
-    let $inputsValor = document.querySelectorAll(".input");
-    for (let i = 0; i < $inputsValor.length; i++) {
-        valoresDeLosInputsDeLasEdades[i] = Number($inputsValor[i].value);
-    }
-    document.querySelector("#mayor").textContent = `La mayor edad de todas es ${laMayorEdadDeTodas(valoresDeLosInputsDeLasEdades)}`;
-    document.querySelector("#menor").textContent = `La menor edad de todas es ${laMenorEdadDeTodas(valoresDeLosInputsDeLasEdades)}`;
-    document.querySelector("#promedio").textContent = `El promedio de  edad de todo el grupo familiar es ${promedioDelGrupo(valoresDeLosInputsDeLasEdades)}`;
-    document.querySelector("#resultado").style.display = "block";
-    $botonCalcularEdades.style.display = "none";
-    document.querySelector("#resultado").style.display = "block";
+    let valoresDeLosInputsDeLasEdades = [];
+    llenarElArrayConLosValoresDeLosInputs(valoresDeLosInputsDeLasEdades)
+    llenarTextoConLosResultados(valoresDeLosInputsDeLasEdades);
+    aparecerContenedorDelResultado();
+    ocularBotonDeCalcular();
+    aparecerContenedorDelResultado();
     ocultarEntradaDePersonas();
     return false;
 }
 
-let mayor = 0;
+
 function laMayorEdadDeTodas(a) {
+    let mayor = 0;
     for (let i = 0; i < a.length; i++) {
         if (a[i] > mayor) {
             mayor = a[i];
@@ -76,8 +68,8 @@ function laMayorEdadDeTodas(a) {
     }
     return mayor;
 }
-let menor;
 function laMenorEdadDeTodas(a) {
+    let menor;
     let ba = 1;
     for (let i = 0; i < a.length; i++) {
         if (ba === 1) {
@@ -89,9 +81,8 @@ function laMenorEdadDeTodas(a) {
     }
     return menor;
 }
-
-let promedio;
 function promedioDelGrupo(a) {
+    let promedio;
     let contador = 0;
     for (let i = 0; i < a.length; i++) {
         contador += a[i];
@@ -102,8 +93,8 @@ function promedioDelGrupo(a) {
 
 
 $botonEmpezarDeNuevo.onclick = function () {
-    document.querySelector("#resultado").style.display = "none";
-    document.querySelector("#entrada-personas").style.display = "none";
+    ocultarContenedorDelResultado();
+    ocultarEntradaDePersonas();
     ocultarBotonEmpezarDeNuevo();
     aparecerPartePrincipalDelPrograma();
     ocularBotonDeCalcular();
@@ -141,4 +132,23 @@ function aparecerEntradaDePersonas() {
 }
 function ocultarEntradaDePersonas() {
     document.querySelector("#entrada-personas").style.display = "none";
+}
+function aparecerContenedorBotones() {
+    document.querySelector("#botones").style.display = "inline-block";
+}
+function aparecerContenedorDelResultado() {
+    document.querySelector("#resultado").style.display = "block";
+}
+function ocultarContenedorDelResultado() {
+    document.querySelector("#resultado").style.display = "none";
+}
+function llenarElArrayConLosValoresDeLosInputs(valoresDeLosInputsDeLasEdades) {
+    document.querySelectorAll(".input").forEach(function (input, indice) {
+        console.log(valoresDeLosInputsDeLasEdades[indice] = Number(input.value));
+    });
+}
+function llenarTextoConLosResultados(valoresDeLosInputsDeLasEdades) {
+    document.querySelector("#mayor").textContent = `La mayor edad de todas es ${laMayorEdadDeTodas(valoresDeLosInputsDeLasEdades)}`;
+    document.querySelector("#menor").textContent = `La menor edad de todas es ${laMenorEdadDeTodas(valoresDeLosInputsDeLasEdades)}`;
+    document.querySelector("#promedio").textContent = `El promedio de  edad de todo el grupo familiar es ${promedioDelGrupo(valoresDeLosInputsDeLasEdades)}`;
 }
