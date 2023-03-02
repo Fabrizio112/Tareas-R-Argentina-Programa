@@ -10,7 +10,7 @@ let $botonAgregar = document.querySelector("#agregar");
 let $botonQuitar = document.querySelector("#quitar");
 let $botonCalcular = document.querySelector("#calcular");
 document.querySelector("#valor-inputs").value = 0;
-
+let $inputContador = document.querySelector("#valor-inputs")
 
 $botonAgregar.onclick = function () {
     adicionDelContadorDeLosInputs();
@@ -34,7 +34,7 @@ function agregarInputsParaIngresarSalario(i) {
     let nuevoLabelTexto = document.createTextNode(`Ingrese su salario Anual Persona ${i} : `);
     nuevoLabel.appendChild(nuevoLabelTexto);
     let nuevoInput = document.createElement("input");
-    nuevoInput.name = `input-salario`;
+    nuevoInput.name = `input-salario${i}`;
     nuevoInput.type = "number";
     nuevoInput.className = `input`;
     nuevoDiv.appendChild(nuevoLabel);
@@ -64,15 +64,33 @@ function verificarSiEsCeroElValor() {
 
 
 $botonCalcular.onclick = function () {
-    resetearLaClaseDeLosInputs();
-    filtroDeInputsEnBlanco();
-    let valorDeLosInputs = []
-    llenarElArrayConElValorDeLosImputs(valorDeLosInputs);
-    llenarLosResultados(valorDeLosInputs);
-    aparecerElContenedorDeLosResultados();
+    borrarMensajesDeError();
+    ocultarContenedorErrores();
+    ocultarElContenedorDeLosResultados();
+    esCeroONo();
     return false
 }
 
+function esCeroONo() {
+    if (Number($inputContador.value) === 0) {
+        alert("No se puede calcular si no agregas nada ,Por favor agrega casilleros para realizar tu calculo");
+    } else {
+        ocultarElContenedorDeLosResultados();
+        let arrayConLosValoresDeLasValidaciones = [];
+        llenarElArrayConLasValidacionesDeLosInputs(arrayConLosValoresDeLasValidaciones);
+        manejarError(arrayConLosValoresDeLasValidaciones);
+        const exito = manejarError(arrayConLosValoresDeLasValidaciones) === 0
+        if (exito) {
+            resetearLaClaseDeLosInputs();
+            filtroDeInputsEnBlanco();
+            let valorDeLosInputs = []
+            llenarElArrayConElValorDeLosImputs(valorDeLosInputs);
+            llenarLosResultados(valorDeLosInputs);
+            aparecerElContenedorDeLosResultados();
+        }
+        else { }
+    }
+}
 
 function mayorSalarioAnual(a) {
     let mayor = 0;
@@ -117,7 +135,7 @@ function salarioMensualPromedio(a) {
 }
 
 function resetearLaClaseDeLosInputs() {
-    document.querySelectorAll(`[name="input-salario"]`).forEach(function (input) {
+    document.querySelectorAll(`[name*="input-salario"]`).forEach(function (input) {
         input.className = "input";
     })
 }
@@ -126,6 +144,11 @@ function filtroDeInputsEnBlanco() {
         if (Number(inputFiltro.value) === 0) {
             inputFiltro.className = "inputNoTomadoEnCuenta";
         }
+    })
+}
+function llenarElArrayConLasValidacionesDeLosInputs(arrayConLosValoresDeLasValidaciones) {
+    document.querySelectorAll(`[name*="input-salario"]`).forEach(function (input, indice) {
+        arrayConLosValoresDeLasValidaciones[indice] = validarElInput(input.value);
     })
 }
 
@@ -142,4 +165,7 @@ function llenarLosResultados(valorDeLosInputs) {
 }
 function aparecerElContenedorDeLosResultados() {
     document.querySelector(".resultado").style.display = "block";
+}
+function ocultarElContenedorDeLosResultados() {
+    document.querySelector(".resultado").style.display = "none";
 }
