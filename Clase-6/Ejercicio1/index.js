@@ -11,15 +11,22 @@ let $botonSiguiente = document.querySelector("#calcular-familia");
 let $botonCalcularEdades = document.querySelector("#calcular-edad");
 let $botonEmpezarDeNuevo = document.querySelector("#reset");
 
+let $contenedorErrores = document.querySelector("#contenedor-errores");
+
 $botonSiguiente.onclick = function () {
     let cantidadDePersonasEnElGrupoFamilia = Number(document.querySelector("#cantidad-familia").value);
-    borrarIntegranteDeLaFamilia(cantidadDePersonasEnElGrupoFamilia);
-    crearIntegrantesDeLaFamilia(cantidadDePersonasEnElGrupoFamilia);
-    aparecerContenedorBotones()
-    aparecerEntradaDePersonas();
-    aparecerBotonDeCalcular();
-    aparecerBotonEmpezarDeNuevo();
-    ocultarPartePrincipalDelPrograma();
+    const errorInput = validarElInput(cantidadDePersonasEnElGrupoFamilia);
+    manejarError(errorInput);
+    const exito = manejarError(errorInput) === 0;
+    if (exito) {
+        borrarIntegranteDeLaFamilia(cantidadDePersonasEnElGrupoFamilia);
+        crearIntegrantesDeLaFamilia(cantidadDePersonasEnElGrupoFamilia);
+        aparecerContenedorBotones()
+        aparecerEntradaDePersonas();
+        aparecerBotonDeCalcular();
+        aparecerBotonEmpezarDeNuevo();
+        ocultarPartePrincipalDelPrograma();
+    } else { }
     return false;
 }
 
@@ -31,7 +38,8 @@ function crearIntegrantesDeLaFamilia(a) {
         let nuevoLabelTitulo = document.createTextNode(`Integrante N°${i}`);
         nuevoLabel.appendChild(nuevoLabelTitulo);
         let nuevoInput = document.createElement("input");
-        nuevoInput.className = `input`;
+        nuevoInput.className = `input ${i}`;
+        nuevoInput.name = `input${i}`;
         nuevoInput.type = "number";
         nuevoDiv.appendChild(nuevoLabel);
         nuevoDiv.appendChild(nuevoInput);
@@ -48,14 +56,29 @@ function borrarIntegranteDeLaFamilia() {
 
 
 $botonCalcularEdades.onclick = function () {
-    let valoresDeLosInputsDeLasEdades = [];
-    llenarElArrayConLosValoresDeLosInputs(valoresDeLosInputsDeLasEdades)
-    llenarTextoConLosResultados(valoresDeLosInputsDeLasEdades);
-    aparecerContenedorDelResultado();
-    ocularBotonDeCalcular();
-    aparecerContenedorDelResultado();
-    ocultarEntradaDePersonas();
+    let arrayConElResultadoDeLasValidaciones = [];
+    llenarElArrayConElResultadoDeLasValidaciones(arrayConElResultadoDeLasValidaciones);
+    manejarErrores(arrayConElResultadoDeLasValidaciones);
+    const exitos = manejarErrores(arrayConElResultadoDeLasValidaciones) === 0;
+    if (exitos) {
+        resetearLaClaseDeLosInputs();
+        filtrarLosInputsEnBlanco();
+        let valoresDeLosInputsDeLasEdades = [];
+        llenarElArrayConLosValoresDeLosInputs(valoresDeLosInputsDeLasEdades)
+        llenarTextoConLosResultados(valoresDeLosInputsDeLasEdades);
+        aparecerContenedorDelResultado();
+        ocularBotonDeCalcular();
+        aparecerContenedorDelResultado();
+        ocultarEntradaDePersonas();
+    } else { }
+
     return false;
+
+}
+function llenarElArrayConElResultadoDeLasValidaciones(arrayConElResultadoDeLasValidaciones) {
+    document.querySelectorAll(`[name*="input"]`).forEach(function (input, indice) {
+        arrayConElResultadoDeLasValidaciones[indice] = validarElInput(input.value);
+    })
 }
 
 
@@ -98,6 +121,7 @@ $botonEmpezarDeNuevo.onclick = function () {
     ocultarBotonEmpezarDeNuevo();
     aparecerPartePrincipalDelPrograma();
     ocularBotonDeCalcular();
+    ocultarContenedorErrores();
     return false;
 }
 
@@ -144,7 +168,7 @@ function ocultarContenedorDelResultado() {
 }
 function llenarElArrayConLosValoresDeLosInputs(valoresDeLosInputsDeLasEdades) {
     document.querySelectorAll(".input").forEach(function (input, indice) {
-        console.log(valoresDeLosInputsDeLasEdades[indice] = Number(input.value));
+        valoresDeLosInputsDeLasEdades[indice] = Number(input.value);
     });
 }
 function llenarTextoConLosResultados(valoresDeLosInputsDeLasEdades) {
@@ -152,3 +176,23 @@ function llenarTextoConLosResultados(valoresDeLosInputsDeLasEdades) {
     document.querySelector("#menor").textContent = `La menor edad de todas es ${laMenorEdadDeTodas(valoresDeLosInputsDeLasEdades)}`;
     document.querySelector("#promedio").textContent = `El promedio de  edad de todo el grupo familiar es ${promedioDelGrupo(valoresDeLosInputsDeLasEdades)}`;
 }
+
+function filtrarLosInputsEnBlanco() {
+    document.querySelectorAll(".input").forEach(function (inputFiltro) {
+        if (Number(inputFiltro.value) === 0) {
+            inputFiltro.className = "inputNoTomadoEnCuenta";
+        }
+    })
+}
+function resetearLaClaseDeLosInputs() {
+    document.querySelectorAll(`[name*="input"]`).forEach(function (input) {
+        input.className = "input";
+    })
+}
+
+function ocultarContenedorErrores() {
+    $contenedorErrores.className = "invisible";
+}
+function aparecerContenedorErrores() {
+    $contenedorErrores.className = "";
+} 
