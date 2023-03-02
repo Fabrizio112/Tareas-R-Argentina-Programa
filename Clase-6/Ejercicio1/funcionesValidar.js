@@ -1,5 +1,11 @@
 
 function validarElInput(a) {
+    if (/[1-9]\.[1-9]*/.test(a)) {
+        return `Este campo no acpeta numeros decimales`
+    }
+    if (/[0]/.test(a)) {
+        return `Este campo no puede enviarse con un cero`;
+    }
     if (!/[1-9]/.test(a)) {
         return `Este campo solo puede tener numeros enteros`;
     }
@@ -28,7 +34,7 @@ function manejarErrores(arrayConElResultadoDeLasValidaciones) {
     let contadorErrores = 0;
     borrarMensajesDeError();
     for (i = 0; i < arrayConElResultadoDeLasValidaciones.length; i++) {
-        if (arrayConElResultadoDeLasValidaciones[i] == `Este campo solo puede tener numeros enteros`) {
+        if (arrayConElResultadoDeLasValidaciones[i].length > 0) {
             document.querySelector(`[name="input${i + 1}"]`).className = "error";
             contadorErrores++;
             let elementoLiDelError = document.createElement("li");

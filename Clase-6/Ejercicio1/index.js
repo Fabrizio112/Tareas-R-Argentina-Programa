@@ -14,7 +14,7 @@ let $botonEmpezarDeNuevo = document.querySelector("#reset");
 let $contenedorErrores = document.querySelector("#contenedor-errores");
 
 $botonSiguiente.onclick = function () {
-    let cantidadDePersonasEnElGrupoFamilia = Number(document.querySelector("#cantidad-familia").value);
+    let cantidadDePersonasEnElGrupoFamilia = document.querySelector("#cantidad-familia").value;
     const errorInput = validarElInput(cantidadDePersonasEnElGrupoFamilia);
     manejarError(errorInput);
     const exito = manejarError(errorInput) === 0;
