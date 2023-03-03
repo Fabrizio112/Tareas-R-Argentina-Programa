@@ -2,6 +2,7 @@
     display: none;
 }
 
+
 body {
     padding: 0;
     margin: 0;
@@ -91,4 +92,26 @@ form #calcular-familia {
     text-transform: uppercase;
     font-size: 15px;
     font-style: italic;
+}
+
+
+.error {
+    border: 3px solid red !important;
+}
+
+#contenedor-errores {
+    background-color: red;
+    color: white;
+    width: 400px;
+    text-align: center;
+    margin: 10px auto;
+    padding: 20px;
+    border-radius: 50px;
+    border: 1px solid white;
+}
+
+#contenedor-errores li {
+    text-transform: uppercase;
+    font-size: 14px;
+    margin: 10px 0
 }
