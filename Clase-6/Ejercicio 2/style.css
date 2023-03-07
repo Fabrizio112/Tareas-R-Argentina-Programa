@@ -1,4 +1,4 @@
-.invisible {
+/* .invisible {
     display: none;
 }
 
@@ -117,4 +117,18 @@ body {
     text-shadow: 1px 1px 1px black;
     font-family: sans-serif;
     list-style: none;
+} */
+
+.container {
+    background-image: linear-gradient(to right, rgb(182, 244, 146), rgb(51, 139, 147));
+}
+
+#calcular {
+    transition: all 0.2s cubic-bezier(0.55, 0.085, 0.68, 0.53);
+}
+
+#calcular:hover {
+    cursor: pointer;
+    transform: translateY(-5px);
+    border: 1px solid black;
 }
