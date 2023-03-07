@@ -6,33 +6,40 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <title>Clase 6 /Ejercicio 1 </title>
 </head>
 
 <body>
-    <div class="container">
-        <form id="container">
-            <h1>Calcular edades en un grupo Familiar</h1>
-            <label for="" id="label-personas">Cuantas personas hay en tu grupo familiar?</label>
-            <input type="number" id="cantidad-familia" value="0">
-            <button id="calcular-familia">Siguiente</button>
+    <div class="container bg-primary bg-gradient  my-5 rounded border border-dark ">
+        <form id="container" class="d-flex flex-column">
+            <h1 class="p-3 text-uppercase text-decoration-underline text-center">Calcular edades en un grupo Familiar
+            </h1>
+            <label class="form-label p-2 text-center" for="" id="label-personas">Cuantas personas hay en tu grupo
+                familiar?</label>
+            <input class="form-control text-center fs-3 mb-4 border border-dark text-center" type="number"
+                id="cantidad-familia" value="0">
+            <button class="btn btn-dark px-5 text-light border" id="calcular-familia">Siguiente</button>
             <br>
 
 
-            <div id="entrada-personas">
+            <div id="entrada-personas" class="d-none">
 
             </div>
-            <div id="contenedor-errores" class="invisible">
+            <div id="contenedor-errores" class="d-none">
 
             </div>
-            <div id="resultado" class="invisible">
+            <div id="resultado"
+                class="d-none text-center fs-3 fw-bold bg-success p-4 rounded border border-light text-light mx-4">
                 <p id="mayor"></p>
                 <p id="menor"></p>
                 <p id="promedio"></p>
             </div>
-            <div id="botones" class="invisible">
-                <button id="calcular-edad">Calcular</button>
-                <button type="reset" id="reset" class="invisible">Empezar de Nuevo</button>
+            <div id="botones" class="d-none my-5 text-center">
+                <button class="btn btn-outline-dark px-5 text-light border me-5" id="calcular-edad">Calcular</button>
+                <button class="btn btn-outline-light px-5 text-dark border border-dark" type="reset" id="reset">Empezar
+                    de
+                    Nuevo</button>
             </div>
         </form>
 

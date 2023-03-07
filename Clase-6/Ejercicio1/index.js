@@ -37,8 +37,9 @@ function crearIntegrantesDeLaFamilia(a) {
         let nuevoLabel = document.createElement("label");
         let nuevoLabelTitulo = document.createTextNode(`Integrante N°${i}`);
         nuevoLabel.appendChild(nuevoLabelTitulo);
+        nuevoLabel.classList.add("form-label", "fs-3", "mb-2", "fw-bold")
         let nuevoInput = document.createElement("input");
-        nuevoInput.className = `input ${i}`;
+        nuevoInput.classList.add("form-control", "border", "border-dark");
         nuevoInput.name = `input${i}`;
         nuevoInput.type = "number";
         nuevoDiv.appendChild(nuevoLabel);
@@ -129,42 +130,42 @@ let $labelPersonas = document.querySelector("#label-personas");
 let $inputCantidadDeIntegrantes = document.querySelector("#cantidad-familia");
 
 function ocultarPartePrincipalDelPrograma() {
-    $botonSiguiente.style.display = "none";
-    $inputCantidadDeIntegrantes.style.display = "none";
-    $labelPersonas.style.display = "none";
+    $botonSiguiente.classList.add("d-none");
+    $inputCantidadDeIntegrantes.classList.add("d-none");
+    $labelPersonas.classList.add("d-none");
 }
 function aparecerPartePrincipalDelPrograma() {
-    $botonSiguiente.style.display = "block";
-    $inputCantidadDeIntegrantes.style.display = "block";
-    $labelPersonas.style.display = "block";
+    $botonSiguiente.classList.remove("d-none");
+    $inputCantidadDeIntegrantes.classList.remove("d-none");
+    $labelPersonas.classList.remove("d-none");
 }
 
 function ocularBotonDeCalcular() {
-    $botonCalcularEdades.style.display = "none";
+    $botonCalcularEdades.classList.add("d-none");
 }
 function aparecerBotonDeCalcular() {
-    $botonCalcularEdades.style.display = "inline-block";
+    $botonCalcularEdades.classList.remove("d-none");
 }
 function ocultarBotonEmpezarDeNuevo() {
-    $botonEmpezarDeNuevo.style.display = "none";
+    $botonEmpezarDeNuevo.classList.add("d-none");
 }
 function aparecerBotonEmpezarDeNuevo() {
-    $botonEmpezarDeNuevo.style.display = "inline-block";
+    $botonEmpezarDeNuevo.classList.remove("d-none");
 }
 function aparecerEntradaDePersonas() {
-    document.querySelector("#entrada-personas").style.display = "block";
+    document.querySelector("#entrada-personas").classList.remove("d-none");
 }
 function ocultarEntradaDePersonas() {
-    document.querySelector("#entrada-personas").style.display = "none";
+    document.querySelector("#entrada-personas").classList.add("d-none");
 }
 function aparecerContenedorBotones() {
-    document.querySelector("#botones").style.display = "inline-block";
+    document.querySelector("#botones").classList.remove("d-none");
 }
 function aparecerContenedorDelResultado() {
-    document.querySelector("#resultado").style.display = "block";
+    document.querySelector("#resultado").classList.remove("d-none");
 }
 function ocultarContenedorDelResultado() {
-    document.querySelector("#resultado").style.display = "none";
+    document.querySelector("#resultado").classList.add("d-none");
 }
 function llenarElArrayConLosValoresDeLosInputs(valoresDeLosInputsDeLasEdades) {
     document.querySelectorAll(".input").forEach(function (input, indice) {
@@ -186,13 +187,13 @@ function filtrarLosInputsEnBlanco() {
 }
 function resetearLaClaseDeLosInputs() {
     document.querySelectorAll(`[name*="input"]`).forEach(function (input) {
-        input.className = "input";
+        input.classList.add("input");
     })
 }
 
 function ocultarContenedorErrores() {
-    $contenedorErrores.className = "invisible";
+    $contenedorErrores.classList.add("d-none");
 }
 function aparecerContenedorErrores() {
-    $contenedorErrores.className = "";
+    $contenedorErrores.classList.remove("d-none");
 } 
