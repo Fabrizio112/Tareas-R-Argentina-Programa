@@ -6,43 +6,50 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
     <title>Document</title>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Clases de Argentina Programa</h1>
-        <input type="Number" id="cantidad-de-clases-totales" disabled>
-        <div class="clase-de-argentina-programa">
-            <div class="contenedor-clases">
-                <div class="titulo-de-clases"></div>
-                <span>Duracion:</span><br>
-                <div class="minidiv">
-                    <label for="">Horas</label>
-                    <input type="number" class="horas"><br>
+    <div class="container bg-primary  my-5 p-4 border border-dark rounded">
+        <h1 class="text-center text-uppercase text-decoration-underline p-2">Clases de Argentina Programa</h1>
+        <input class="form-control form-control-sm mb-3 text-center" type="Number" id="cantidad-de-clases-totales"
+            disabled>
+        <div class="container clase-de-argentina-programa d-flex flex-column">
+            <div class="col contenedor-clases d-none ">
+                <div class="titulo-de-clases d-flex flex-column"></div>
+                <span class="text-decoration-underline fs-4">Duracion:</span><br>
+                <div class="d-flex flex-column">
+                    <label class="form-label  fs-4" for="">Horas:</label>
+                    <input type="number" class="form-control rounded horas">
                 </div>
                 <div>
-                    <label for="">Minutos </label>
-                    <input type="number" class="minutos"><br>
+                    <label class="form-label fs-4" for="">Minutos: </label>
+                    <input type="number" class="form-control minutos">
                 </div>
                 <div>
-                    <label for="">Segundos</label>
-                    <input type="number" class="segundos">
+                    <label class="form-label fs-4" for="">Segundos:</label>
+                    <input type="number" class="form-control segundos">
                 </div>
                 <br>
             </div>
-            <div class="cuantas-clases">
-                <label for="">¿Cuantas clases de Argentina Programa hay?:</label>
-                <input type="text" name="" id="clases">
-                <button id="calcular">Calcular</button>
+            <div class="cuantas-clases text-center">
+                <label class="form-label fs-5 " for="">¿Cuantas clases de Argentina Programa hay?:</label>
+                <input class="form-control fs-1 text-center mb-5" type="text" name="" id="clases">
+                <button class="btn btn-light px-5 fs-4" id="calcular">Calcular</button>
             </div>
         </div>
-        <div class="botones">
-            <button id="tiempo">Calcular Tiempo Total</button>
-            <button type="reset">Resetear</button>
+        <div class="botones d-none text-center my-4">
+            <button class="btn btn-light px-5 fs-4" id="tiempo">Calcular Tiempo Total</button>
+            <button class="btn btn-dark px-5 fs-4" type="reset">Resetear</button>
         </div>
-        <div id="resultado">
-            <strong>Horas totales: , Minutos Totales:,Segundos Totales:</strong>
+        <div id="resultado" class="d-none bg-light text-center p-4">
+            <h2 class="fs-1 text-uppercase text-decoration-underline">El tiempo total es:</h2>
+            <strong id="resultado-horas" class="fs-2">Horas totales: </strong>
+            <br>
+            <strong id="resultado-minutos" class="fs-2">Minutos Totales:</strong>
+            <br>
+            <strong id="resultado-segundos" class="fs-2">Segundos Totales:</strong>
         </div>
     </div>
 
