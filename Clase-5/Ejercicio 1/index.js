@@ -13,17 +13,15 @@ $botonEnviar.onclick = function () {
     let apellidoDelUsuario = document.querySelector("#surname-user").value;
     let edadDelUsuario = Number(document.querySelector("#age-user").value);
     let $titulo = document.querySelector("h1");
-    let $contenedor = document.querySelector(".container");
-    document.querySelector("form").style.display = "none";
-    $titulo.textContent = `Bienvenido! ${primerNombreDelUsuario} ${segundoNombreDelUsuario} ${apellidoDelUsuario} de ${edadDelUsuario} años de edad`;
-    $contenedor.style.display = "flex";
-    $contenedor.style.justifyContent = "center";
-    $contenedor.style.alignItems = "center";
-    $titulo.style.width = "100%";
-    $titulo.style.height = "100%";
-    $titulo.style.textAlign = "center";
-
+    esconderFormulario();
+    mostrarMensaje(primerNombreDelUsuario, segundoNombreDelUsuario, apellidoDelUsuario, edadDelUsuario, $titulo);
     return false;
 
 }
 
+function esconderFormulario() {
+    document.querySelector("form").classList.add("d-none");
+}
+function mostrarMensaje(a, b, c, d, t) {
+    t.textContent = `Bienvenido! ${a} ${b} ${c} de ${d} años de edad`;
+}

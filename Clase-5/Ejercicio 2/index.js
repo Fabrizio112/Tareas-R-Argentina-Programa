@@ -15,40 +15,56 @@ let $inputHoras = document.querySelector(".horas")
 let $inputMinutos = document.querySelector(".minutos")
 let $inputSegundos = document.querySelector(".segundos")
 let $inputCantidadDeClasesDeArgentinaPrograma = document.querySelector("#cantidad-de-clases-totales");
-
+let $resultado = document.querySelector("#resultado");
 
 $botonCalcular.onclick = function () {
     var cantidadDeClasesDeArgentinaPrograma = Number(document.querySelector("#clases").value);
-    document.querySelector(".cuantas-clases").style.display = "none";
+    ocultarContenedorInputsInicial();
+    crearLasClasesDeArgentinaPrograma(cantidadDeClasesDeArgentinaPrograma);
+    ocultarAlgunElemento($contenedor);
+    aparecerAlgunElemento($contenedorDeBotones);
+    colocarCantidadDeClasesDeArgentinaProgramaAlInputCorrespondiente(cantidadDeClasesDeArgentinaPrograma);
+    return false;
+}
+function ocultarContenedorInputsInicial() {
+    document.querySelector(".cuantas-clases").classList.add("d-none");
+}
+function ocultarAlgunElemento(a) {
+    a.classList.add("d-none")
+}
+function aparecerAlgunElemento(a) {
+    a.classList.remove("d-none");
+}
+function crearLasClasesDeArgentinaPrograma(a) {
     let $contenedorClases = document.querySelector(".clase-de-argentina-programa");
     let titulo = document.createElement("h1");
     let textotitulo = document.createTextNode(`Clase Numero`);
     titulo.appendChild(textotitulo);
     $contenedorDelTitulo.insertAdjacentElement("afterbegin", titulo);
-    for (let i = 0; i <= cantidadDeClasesDeArgentinaPrograma; i++) {
+    for (let i = 0; i <= a; i++) {
         $contenedorClases.appendChild($contenedor.cloneNode(true));
         $contenedor.style.display = "inline-block";
+        $contenedor.classList.remove("d-none")
         titulo.textContent = `Clase Numero ${i + 1}`;
-        $inputHoras.className = `horas-${i + 1}`;
-        $inputMinutos.className = `minutos-${i + 1}`;
-        $inputSegundos.className = `segundos-${i + 1}`;
+        $inputHoras.id = (`horas-${i + 1}`);
+        $inputMinutos.id = (`minutos-${i + 1}`);
+        $inputSegundos.id = (`segundos-${i + 1}`);
     }
-    $contenedor.className = "dissapear";
-    document.querySelector(".dissapear").style.display = "none";
-    $contenedorDeBotones.style.display = "inline-block";
-    $inputCantidadDeClasesDeArgentinaPrograma.placeholder = Number(`${cantidadDeClasesDeArgentinaPrograma}`);
-    return false;
+}
+function colocarCantidadDeClasesDeArgentinaProgramaAlInputCorrespondiente(a) {
+    $inputCantidadDeClasesDeArgentinaPrograma.value = Number(`${a}`);
 }
 
-let horasTotales = 0;
-let minutosTotales = 0;
-let segundosTotales = 0;
+
 $botonCalcularTiempo.onclick = function () {
-    for (let x = $inputCantidadDeClasesDeArgentinaPrograma.placeholder; x >= 1; x--) {
-        horasTotales += Number(document.querySelector(`.horas-${x}`).value);
-        minutosTotales += Number(document.querySelector(`.minutos-${x}`).value);
-        segundosTotales += Number(document.querySelector(`.segundos-${x}`).value);
-        for (let m = $inputCantidadDeClasesDeArgentinaPrograma.placeholder; m >= 1; m--) {
+    let horasTotales = 0;
+    let minutosTotales = 0;
+    let segundosTotales = 0;
+    for (let x = Number($inputCantidadDeClasesDeArgentinaPrograma.value); x >= 1; x--) {
+        horasTotales += Number(document.querySelector(`#horas-${x}`).value);
+        minutosTotales += Number(document.querySelector(`#minutos-${x}`).value);
+        segundosTotales += Number(document.querySelector(`#segundos-${x}`).value);
+        for (let m = Number($inputCantidadDeClasesDeArgentinaPrograma.value); m >= 1; m--) {
             if (minutosTotales > 60) {
                 minutosTotales -= 60;
                 horasTotales += 1;
@@ -59,8 +75,10 @@ $botonCalcularTiempo.onclick = function () {
             }
         }
     }
-    document.querySelector("strong").textContent = `Horas totales: ${horasTotales} , Minutos Totales=${minutosTotales},Segundos Totales=${segundosTotales}`;
-    document.querySelector("strong").style.fontSize = "20px";
-    document.querySelector("#resultado").style.display = "block";
+    document.querySelector("#resultado-horas").textContent = `Horas totales: ${horasTotales} `;
+    document.querySelector("#resultado-minutos").textContent = ` Minutos Totales:${minutosTotales}`;
+    document.querySelector("#resultado-segundos").textContent = `Segundos Totales:${segundosTotales}`;
+    aparecerAlgunElemento($resultado);
     return false;
 }
+

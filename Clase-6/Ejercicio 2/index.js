@@ -33,10 +33,11 @@ function agregarInputsParaIngresarSalario(i) {
     let nuevoLabel = document.createElement("label");
     let nuevoLabelTexto = document.createTextNode(`Ingrese su salario Anual Persona ${i} : `);
     nuevoLabel.appendChild(nuevoLabelTexto);
+    nuevoLabel.classList.add("form-label", "mb-3", "fs-4", "fw-bold")
     let nuevoInput = document.createElement("input");
     nuevoInput.name = `input-salario${i}`;
     nuevoInput.type = "number";
-    nuevoInput.className = `input`;
+    nuevoInput.classList.add("input", "form-control", "mb-3");
     nuevoDiv.appendChild(nuevoLabel);
     nuevoDiv.appendChild(nuevoInput);
     document.querySelector(".container-inputs").appendChild(nuevoDiv);
@@ -136,13 +137,15 @@ function salarioMensualPromedio(a) {
 
 function resetearLaClaseDeLosInputs() {
     document.querySelectorAll(`[name*="input-salario"]`).forEach(function (input) {
-        input.className = "input";
+        input.classList.add("input");
     })
 }
 function filtroDeInputsEnBlanco() {
     document.querySelectorAll(".input").forEach(function (inputFiltro) {
         if (Number(inputFiltro.value) === 0) {
-            inputFiltro.className = "inputNoTomadoEnCuenta";
+            inputFiltro.classList.add("inputNoTomadoEnCuenta");
+        } else {
+            inputFiltro.classList.remove("inputNoTomadoEnCuenta");
         }
     })
 }
@@ -164,8 +167,8 @@ function llenarLosResultados(valorDeLosInputs) {
     document.querySelector("#mensual-promedio").textContent = `El salario mensual promedio es : ${salarioMensualPromedio(valorDeLosInputs)}`;
 }
 function aparecerElContenedorDeLosResultados() {
-    document.querySelector(".resultado").style.display = "block";
+    document.querySelector(".resultado").classList.remove("d-none");
 }
 function ocultarElContenedorDeLosResultados() {
-    document.querySelector(".resultado").style.display = "none";
+    document.querySelector(".resultado").classList.add("d-none");
 }

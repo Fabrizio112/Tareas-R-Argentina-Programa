@@ -6,22 +6,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <title>Clase 5</title>
 </head>
 
 <body>
-    <div class="container">
-        <h1>Calculadora de Salario Mensual</h1>
+    <div class="container bg-warning bg-gradient text-center mt-5">
+        <h1 class="text-uppercase text-decoration-underline p-3 ">Calculadora de Salario Mensual</h1>
 
-        <form action="">
-            <label for="">Salario Anual:</label> <br>
-            <input type="number" placeholder="Por favor ingrese su salario Anual" id="salario-user"> <br>
-            <div class="contenedor-botones">
-                <button id="calcular">Calcular</button>
-                <button type="reset">Resetear</button>
+        <form action="" class="pb-5">
+            <label class="form-label text-decoration-underline" for="">Salario Anual:</label> <br>
+            <input class="form-control form-control-lg text-center fs-3" type="number"
+                placeholder="Por favor ingrese su salario Anual" id="salario-user">
+            <br>
+            <div class="container my-4">
+                <button class="btn btn-outline-dark btn-lg px-4 " id="calcular">Calcular</button>
+                <button class="btn btn-outline-dark btn-lg px-4 text-center" type="reset">Resetear</button>
             </div>
-            <label for="" class="text-salario">Salario Mensual:</label>
-            <input id="salario-mensual" type="text" disabled placeholder="Su salario mensual es:">
+            <label for="" class="form-label text-decoration-underline">Salario Mensual:</label>
+            <input id="salario-mensual" class="form-control form-control-lg text-center fs-3" type="text" disabled
+                placeholder="Su salario mensual es:">
         </form>
 
     </div>

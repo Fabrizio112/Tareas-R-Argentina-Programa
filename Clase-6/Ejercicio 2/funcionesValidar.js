@@ -12,15 +12,16 @@ function manejarError(arrayConLosValoresDeLasValidaciones) {
     borrarMensajesDeError();
     for (let i = 0; i < arrayConLosValoresDeLasValidaciones.length; i++) {
         if (arrayConLosValoresDeLasValidaciones[i].length > 0) {
-            document.querySelector(`[name="input-salario${i + 1}"]`).className = "error";
+            document.querySelector(`[name="input-salario${i + 1}"]`).classList.add("border", "border-danger", "border-3");
             contadorErrores++;
             let elementoLiDelError = document.createElement("li");
             elementoLiDelError.textContent = arrayConLosValoresDeLasValidaciones[i];
-            elementoLiDelError.className = "mensajes-de-error";
+            elementoLiDelError.classList.add("mensajes-de-error", "fs-4");
+            $contenedorErrores.classList.add("bg-danger", "text-center", "text-light", "p-3", "my-4", "border", "rounded")
             $contenedorErrores.appendChild(elementoLiDelError);
             aparecerContenedorErrores();
         } else {
-            document.querySelector(`[name="input-salario${i + 1}"]`).className = "";
+            document.querySelector(`[name="input-salario${i + 1}"]`).classList.remove("border", "border-danger", "border-3");
             ocultarContenedorErrores();
         }
     }
@@ -34,8 +35,8 @@ function borrarMensajesDeError() {
 }
 
 function aparecerContenedorErrores() {
-    $contenedorErrores.className = "";
+    $contenedorErrores.classList.remove("d-none");
 };
 function ocultarContenedorErrores() {
-    $contenedorErrores.className = "invisible";
+    $contenedorErrores.classList.add("d-none");
 };

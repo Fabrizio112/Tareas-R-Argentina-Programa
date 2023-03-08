@@ -6,31 +6,35 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="../../node_modules/bootstrap/dist/css/bootstrap.min.css">
     <title>CLASE 5 /Ejercicio 1</title>
 </head>
 
 <body>
 
     <body>
-        <div class="container">
+        <div class="container bg-danger text-center p-4 my-5">
             <div class="encabezado">
-                <h1>Bienvenido!</h1>
+                <h1 class="text-uppercase mb-3">Bienvenido!</h1>
             </div>
             <form>
-                <label for="">Primer Nombre:</label><br>
-                <input type="text" id="firstname-user" placeholder="Ingresa tu Primer Nombre">
+                <label class="form-label fw-bolder text-decoration-underline" for="">Primer Nombre:</label><br>
+                <input class="form-control text-center fs-5" type="text" id="firstname-user"
+                    placeholder="Ingresa tu Primer Nombre">
                 <br>
-                <label for="">Segundo Nombre:</label><br>
-                <input type="text" id="secondname-user" placeholder="Ingresa tu segundo Nombre">
+                <label class="form-label fw-bolder text-decoration-underline" for="">Segundo Nombre:</label><br>
+                <input class="form-control text-center fs-5" type="text" id="secondname-user"
+                    placeholder="Ingresa tu segundo Nombre">
                 <br>
-                <label for="">Apellido:</label><br>
-                <input type="text" id="surname-user" placeholder="Ingresa tu apellido">
+                <label class="form-label fw-bolder text-decoration-underline" for="">Apellido:</label><br>
+                <input class="form-control text-center fs-5" type="text" id="surname-user"
+                    placeholder="Ingresa tu apellido">
                 <br>
-                <label for="">Edad</label><br>
-                <input type="number" id="age-user" placeholder="Ingresa tu edad">
+                <label class="form-label fw-bolder text-decoration-underline" for="">Edad</label><br>
+                <input class="form-control text-center fs-5" type="number" id="age-user" placeholder="Ingresa tu edad">
                 <br>
-                <button id="boton">Enviar</button>
-                <button type="reset">Resetear</button>
+                <button class="btn btn-outline-light fs-4 px-5 me-3" id="boton">Enviar</button>
+                <button class="btn btn-outline-light fs-4 px-5" type="reset">Resetear</button>
             </form>
 
 
