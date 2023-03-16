@@ -11,7 +11,7 @@
 </head>
 
 <body>
-    <div class="container bg-warning bg-gradient text-center mt-5">
+    <div class="container bg-warning bg-gradient text-center mt-5 p-3">
         <h1 class="text-uppercase text-decoration-underline p-3 ">Calculadora de Salario Mensual</h1>
 
         <form action="" class="pb-5">
@@ -27,10 +27,15 @@
             <input id="salario-mensual" class="form-control form-control-lg text-center fs-3" type="text" disabled
                 placeholder="Su salario mensual es:">
         </form>
+        <div id="contenedor-errores" class="d-none">
+
+        </div>
 
     </div>
 
     <script src="index.js"></script>
+    <script src="funcionesValidar.js"></script>
+    <script src="pruebas.js"></script>
 </body>
 
 </html>
