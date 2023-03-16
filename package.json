@@ -1,0 +1,24 @@
+{
+  "dependencies": {
+    "bootstrap": "^5.2.3",
+    "http-server": "^14.1.1"
+  },
+  "name": "tareas-r-argentina-programa",
+  "description": "Repositorio donde iran alojadas las diferentes tareas de las diferentes clases de R/Argentina Programa de Js ,de Fabricio",
+  "version": "1.0.0",
+  "main": "index.html",
+  "devDependencies": {
+    "cypress": "^12.8.1"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open",
+    "cypress:run": "cypress run"
+  },
+  "repository": {
+    "type": "git",
+    "url": "(https://github.com/Fabrizio112/Tareas-R-Argentina-Programa)"
+  },
+  "author": "",
+  "license": "ISC"
+}
