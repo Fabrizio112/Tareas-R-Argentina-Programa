@@ -2,7 +2,7 @@ describe('Class 5 Homework 1 Tests', () => {
 
     describe('Working basic test', () => {
         beforeEach('Go to the URL ', () => {
-            cy.visit('http://192.168.100.28:8080/Clase-5/')
+            cy.visit('http://192.168.100.28:8080/Clase-5/Tarea%201/')
         })
         it('Test if the calculator is working good', () => {
             cy.get('#salario-user').type(850000);
@@ -21,7 +21,7 @@ describe('Class 5 Homework 1 Tests', () => {
     })
     describe('A lot of more difficult tests', () => {
         beforeEach('Go to the URL ', () => {
-            cy.visit('http://192.168.100.28:8080/Clase-5/')
+            cy.visit('http://192.168.100.28:8080/Clase-5/Tarea%201/')
         })
         it('Test error calculator', () => {
             cy.get('#salario-user')
