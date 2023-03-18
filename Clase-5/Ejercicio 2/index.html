@@ -6,8 +6,8 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="/node_modules/bootstrap/dist/css/bootstrap.min.css">
-    <title>Document</title>
+    <link rel="stylesheet" href="../../../node_modules/bootstrap/dist/css/bootstrap.min.css">
+    <title>Clases de Argentina Programa</title>
 </head>
 
 <body>
@@ -16,23 +16,6 @@
         <input class="form-control form-control-sm mb-3 text-center" type="Number" id="cantidad-de-clases-totales"
             disabled>
         <div class="container clase-de-argentina-programa d-flex flex-column">
-            <div class="col contenedor-clases d-none ">
-                <div class="titulo-de-clases d-flex flex-column"></div>
-                <span class="text-decoration-underline fs-4">Duracion:</span><br>
-                <div class="d-flex flex-column">
-                    <label class="form-label  fs-4" for="">Horas:</label>
-                    <input type="number" class="form-control rounded horas">
-                </div>
-                <div>
-                    <label class="form-label fs-4" for="">Minutos: </label>
-                    <input type="number" class="form-control minutos">
-                </div>
-                <div>
-                    <label class="form-label fs-4" for="">Segundos:</label>
-                    <input type="number" class="form-control segundos">
-                </div>
-                <br>
-            </div>
             <div class="cuantas-clases text-center">
                 <label class="form-label fs-5 " for="">¿Cuantas clases de Argentina Programa hay?:</label>
                 <input class="form-control fs-1 text-center mb-5" type="text" name="" id="clases">
@@ -41,7 +24,7 @@
         </div>
         <div class="botones d-none text-center my-4">
             <button class="btn btn-light px-5 fs-4" id="tiempo">Calcular Tiempo Total</button>
-            <button class="btn btn-dark px-5 fs-4" type="reset">Resetear</button>
+            <button class="btn btn-dark px-5 fs-4" id="reset" type="reset">Resetear</button>
         </div>
         <div id="resultado" class="d-none bg-light text-center p-4">
             <h2 class="fs-1 text-uppercase text-decoration-underline">El tiempo total es:</h2>
@@ -55,6 +38,8 @@
 
 
     <script src="index.js"></script>
+    <script src="pruebas.js"></script>
+    <script src="funcionesValidar.js"></script>
 </body>
 
 </html>

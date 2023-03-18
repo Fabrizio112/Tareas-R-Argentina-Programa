@@ -16,18 +16,15 @@ let $inputMinutos = document.querySelector(".minutos")
 let $inputSegundos = document.querySelector(".segundos")
 let $inputCantidadDeClasesDeArgentinaPrograma = document.querySelector("#cantidad-de-clases-totales");
 let $resultado = document.querySelector("#resultado");
+let $botonResetear = document.querySelector("#reset")
 
 $botonCalcular.onclick = function () {
     var cantidadDeClasesDeArgentinaPrograma = Number(document.querySelector("#clases").value);
-    ocultarContenedorInputsInicial();
+    ocultarAlgunElemento(document.querySelector(".cuantas-clases"))
     crearLasClasesDeArgentinaPrograma(cantidadDeClasesDeArgentinaPrograma);
-    ocultarAlgunElemento($contenedor);
     aparecerAlgunElemento($contenedorDeBotones);
     colocarCantidadDeClasesDeArgentinaProgramaAlInputCorrespondiente(cantidadDeClasesDeArgentinaPrograma);
     return false;
-}
-function ocultarContenedorInputsInicial() {
-    document.querySelector(".cuantas-clases").classList.add("d-none");
 }
 function ocultarAlgunElemento(a) {
     a.classList.add("d-none")
@@ -36,25 +33,65 @@ function aparecerAlgunElemento(a) {
     a.classList.remove("d-none");
 }
 function crearLasClasesDeArgentinaPrograma(a) {
-    let $contenedorClases = document.querySelector(".clase-de-argentina-programa");
-    let titulo = document.createElement("h1");
-    let textotitulo = document.createTextNode(`Clase Numero`);
-    titulo.appendChild(textotitulo);
-    $contenedorDelTitulo.insertAdjacentElement("afterbegin", titulo);
-    for (let i = 0; i <= a; i++) {
-        $contenedorClases.appendChild($contenedor.cloneNode(true));
-        $contenedor.style.display = "inline-block";
-        $contenedor.classList.remove("d-none")
-        titulo.textContent = `Clase Numero ${i + 1}`;
-        $inputHoras.id = (`horas-${i + 1}`);
-        $inputMinutos.id = (`minutos-${i + 1}`);
-        $inputSegundos.id = (`segundos-${i + 1}`);
+    let $contenedorClasesArgentina = document.querySelector(".clase-de-argentina-programa");
+    for (let i = 0; i < a; i++) {
+        let contenedorClases = document.createElement('div');
+        contenedorClases.classList.add("contenedor-clases", "col", "my-3")
+        let divTitulo = document.createElement('div')
+        divTitulo.classList.add("d-flex", "flex-column")
+        let titulo = document.createElement("h1");
+        let textotitulo = document.createTextNode(`Clase Numero ${i + 1}`);
+        titulo.appendChild(textotitulo);
+        divTitulo.appendChild(titulo)
+        let spanDuracion = document.createElement('span')
+        let tituloDelSpan = document.createTextNode('Duracion:')
+        spanDuracion.appendChild(tituloDelSpan)
+        spanDuracion.classList.add("text-decoration-underline", "fs-4")
+        let divHoras = document.createElement('div');
+        let labelHoras = document.createElement('label')
+        labelHoras.classList.add("form-label", "fs-4")
+        let labelTextHoras = document.createTextNode('Horas:')
+        labelHoras.appendChild(labelTextHoras);
+        let inputHoras = document.createElement('input')
+        inputHoras.classList.add("form-control", "rounded")
+        divHoras.appendChild(labelHoras)
+        divHoras.appendChild(inputHoras)
+        divHoras.classList.add("d-flex", "flex-column")
+        let divMinutos = document.createElement('div');
+        let labelMinutos = document.createElement('label')
+        let labelTextMin = document.createTextNode('Minutos:')
+        labelMinutos.appendChild(labelTextMin);
+        labelMinutos.classList.add("form-label", "fs-4")
+        let inputMinutos = document.createElement('input')
+        inputMinutos.classList.add("form-control", "rounded")
+        divMinutos.appendChild(labelMinutos)
+        divMinutos.appendChild(inputMinutos)
+        let divSegundos = document.createElement('div');
+        let labelSegundos = document.createElement('label')
+        let labelTextSegundos = document.createTextNode('Segundos:')
+        labelSegundos.appendChild(labelTextSegundos);
+        labelSegundos.classList.add("form-label", "fs-4")
+        let inputSegundos = document.createElement('input')
+        inputSegundos.classList.add("form-control", "rounded")
+        divSegundos.appendChild(labelSegundos)
+        divSegundos.appendChild(inputSegundos)
+        inputHoras.id = (`horas-${i + 1}`);
+        inputMinutos.id = (`minutos-${i + 1}`);
+        inputSegundos.id = (`segundos-${i + 1}`);
+        contenedorClases.appendChild(divTitulo)
+        contenedorClases.appendChild(spanDuracion)
+        contenedorClases.appendChild(divHoras)
+        contenedorClases.appendChild(divMinutos)
+        contenedorClases.appendChild(divSegundos)
+        $contenedorClasesArgentina.appendChild(contenedorClases)
     }
 }
 function colocarCantidadDeClasesDeArgentinaProgramaAlInputCorrespondiente(a) {
     $inputCantidadDeClasesDeArgentinaPrograma.value = Number(`${a}`);
 }
-
+function resetearElInputQuePoseeLaCantidadDeClasesDeArgentinaPrograma() {
+    $inputCantidadDeClasesDeArgentinaPrograma.value = "";
+}
 
 $botonCalcularTiempo.onclick = function () {
     let horasTotales = 0;
@@ -82,3 +119,16 @@ $botonCalcularTiempo.onclick = function () {
     return false;
 }
 
+$botonResetear.onclick = function () {
+    ocultarAlgunElemento($resultado)
+    eliminarLasClasesDeArgentinaPrograma()
+    ocultarAlgunElemento($contenedorDeBotones)
+    aparecerAlgunElemento(document.querySelector(".cuantas-clases"))
+    resetearElInputQuePoseeLaCantidadDeClasesDeArgentinaPrograma();
+}
+
+function eliminarLasClasesDeArgentinaPrograma() {
+    document.querySelectorAll(".contenedor-clases").forEach(clases => {
+        clases.remove();
+    })
+}
