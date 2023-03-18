@@ -19,11 +19,15 @@ let $resultado = document.querySelector("#resultado");
 let $botonResetear = document.querySelector("#reset")
 
 $botonCalcular.onclick = function () {
-    var cantidadDeClasesDeArgentinaPrograma = Number(document.querySelector("#clases").value);
-    ocultarAlgunElemento(document.querySelector(".cuantas-clases"))
-    crearLasClasesDeArgentinaPrograma(cantidadDeClasesDeArgentinaPrograma);
-    aparecerAlgunElemento($contenedorDeBotones);
-    colocarCantidadDeClasesDeArgentinaProgramaAlInputCorrespondiente(cantidadDeClasesDeArgentinaPrograma);
+    var cantidadDeClasesDeArgentinaPrograma = document.querySelector("#clases");
+    let exito = manejarError(Number(cantidadDeClasesDeArgentinaPrograma.value), cantidadDeClasesDeArgentinaPrograma)
+    if (exito === 1) {
+    } else {
+        ocultarAlgunElemento(document.querySelector(".cuantas-clases"))
+        crearLasClasesDeArgentinaPrograma(cantidadDeClasesDeArgentinaPrograma.value);
+        aparecerAlgunElemento($contenedorDeBotones);
+        colocarCantidadDeClasesDeArgentinaProgramaAlInputCorrespondiente(cantidadDeClasesDeArgentinaPrograma.value);
+    }
     return false;
 }
 function ocultarAlgunElemento(a) {
@@ -94,28 +98,58 @@ function resetearElInputQuePoseeLaCantidadDeClasesDeArgentinaPrograma() {
 }
 
 $botonCalcularTiempo.onclick = function () {
-    let horasTotales = 0;
-    let minutosTotales = 0;
-    let segundosTotales = 0;
-    for (let x = Number($inputCantidadDeClasesDeArgentinaPrograma.value); x >= 1; x--) {
-        horasTotales += Number(document.querySelector(`#horas-${x}`).value);
-        minutosTotales += Number(document.querySelector(`#minutos-${x}`).value);
-        segundosTotales += Number(document.querySelector(`#segundos-${x}`).value);
-        for (let m = Number($inputCantidadDeClasesDeArgentinaPrograma.value); m >= 1; m--) {
-            if (minutosTotales > 60) {
-                minutosTotales -= 60;
-                horasTotales += 1;
-            }
-            if (segundosTotales > 60) {
-                segundosTotales -= 60;
-                minutosTotales += 1;
+    let errores = {
+        erroresHoras: [],
+        erroresMinutos: [],
+        erroresSegundos: [],
+    }
+    let inputsTotalesDeHoras = document.querySelectorAll(`[id*="horas-"]`)
+    inputsTotalesDeHoras.forEach(input => {
+        let exito = manejarErrorDeLosInputs(input.value, input)
+        if (exito) {
+            errores.erroresHoras.push(validarElInput(input.value))
+        }
+    })
+    let inputsTotalesDeMinutos = document.querySelectorAll(`[id*="minutos-"]`)
+    inputsTotalesDeMinutos.forEach(input => {
+        let exito = manejarErrorDeLosInputs(input.value, input)
+        if (exito) {
+            errores.erroresMinutos.push(validarElInput(input.value))
+        }
+    })
+    let inputsTotalesDeSegundos = document.querySelectorAll(`[id*="segundos-"]`)
+    inputsTotalesDeSegundos.forEach(input => {
+        let exito = manejarErrorDeLosInputs(input.value, input)
+        if (exito) {
+            errores.erroresSegundos.push(validarElInput(input.value))
+        }
+    })
+    let exitoObjeto = manejarErroresDelObjeto(errores) === 0
+    if (exitoObjeto) {
+        let horasTotales = 0;
+        let minutosTotales = 0;
+        let segundosTotales = 0;
+        for (let x = Number($inputCantidadDeClasesDeArgentinaPrograma.value); x >= 1; x--) {
+            horasTotales += Number(document.querySelector(`#horas-${x}`).value);
+            minutosTotales += Number(document.querySelector(`#minutos-${x}`).value);
+            segundosTotales += Number(document.querySelector(`#segundos-${x}`).value);
+            for (let m = Number($inputCantidadDeClasesDeArgentinaPrograma.value); m >= 1; m--) {
+                if (minutosTotales > 60) {
+                    minutosTotales -= 60;
+                    horasTotales += 1;
+                }
+                if (segundosTotales > 60) {
+                    segundosTotales -= 60;
+                    minutosTotales += 1;
+                }
             }
         }
+        document.querySelector("#resultado-horas").textContent = `Horas totales: ${horasTotales} `;
+        document.querySelector("#resultado-minutos").textContent = ` Minutos Totales:${minutosTotales}`;
+        document.querySelector("#resultado-segundos").textContent = `Segundos Totales:${segundosTotales}`;
+        aparecerAlgunElemento($resultado);
     }
-    document.querySelector("#resultado-horas").textContent = `Horas totales: ${horasTotales} `;
-    document.querySelector("#resultado-minutos").textContent = ` Minutos Totales:${minutosTotales}`;
-    document.querySelector("#resultado-segundos").textContent = `Segundos Totales:${segundosTotales}`;
-    aparecerAlgunElemento($resultado);
+
     return false;
 }
 
@@ -125,6 +159,7 @@ $botonResetear.onclick = function () {
     ocultarAlgunElemento($contenedorDeBotones)
     aparecerAlgunElemento(document.querySelector(".cuantas-clases"))
     resetearElInputQuePoseeLaCantidadDeClasesDeArgentinaPrograma();
+    ocultarContenedorDeErrores();
 }
 
 function eliminarLasClasesDeArgentinaPrograma() {
