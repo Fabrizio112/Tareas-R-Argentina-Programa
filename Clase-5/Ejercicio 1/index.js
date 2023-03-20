@@ -7,14 +7,31 @@
 
 
 let $botonEnviar = document.querySelector("#boton");
-$botonEnviar.onclick = function () {
+let $formulario = document.querySelector("form");
+$formulario.onsubmit = validarElFormulario;
+
+function validarElFormulario() {
     let primerNombreDelUsuario = document.querySelector("#firstname-user").value;
     let segundoNombreDelUsuario = document.querySelector("#secondname-user").value;
     let apellidoDelUsuario = document.querySelector("#surname-user").value;
     let edadDelUsuario = Number(document.querySelector("#age-user").value);
+    const errorPrimerNombre = validarEInputTexto(primerNombreDelUsuario)
+    const errorSegundoNombre = validarEInputTexto(segundoNombreDelUsuario)
+    const errorApellido = validarEInputTexto(apellidoDelUsuario)
+    const errorEdadDelUsuario = validarElInputNumero(edadDelUsuario)
+    const errores = {
+        primerNombre: errorPrimerNombre,
+        segundoNombre: errorSegundoNombre,
+        apellido: errorApellido,
+        edad: errorEdadDelUsuario,
+    }
     let $titulo = document.querySelector("h1");
-    esconderFormulario();
-    mostrarMensaje(primerNombreDelUsuario, segundoNombreDelUsuario, apellidoDelUsuario, edadDelUsuario, $titulo);
+    let exito = manejarErrores(errores) === 0
+    if (exito) {
+        esconderFormulario();
+        ocultarContenedorDeErrores();
+        mostrarMensaje(primerNombreDelUsuario, segundoNombreDelUsuario, apellidoDelUsuario, edadDelUsuario, $titulo);
+    }
     return false;
 
 }

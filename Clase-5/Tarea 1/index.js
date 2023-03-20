@@ -15,12 +15,15 @@ al event handler “onclick”, agréguentle un return false; al final de la fun
 
 const $botonCalcular = document.querySelector("#calcular");
 $botonCalcular.onclick = function () {
-  let salarioAnualDelUsuario = Number(document.querySelector("#salario-user").value);
-  let salarioMensualDelUsuario = salarioAnualDelUsuario / 12;
-  document.querySelector("#salario-mensual").value = salarioMensualDelUsuario;
+  let exito = manejarError(Number(document.querySelector("#salario-user").value))
+  if (exito === 1) {
+  } else {
+    let salarioAnualDelUsuario = Number(document.querySelector("#salario-user").value);
+    let salarioMensualDelUsuario = salarioAnualDelUsuario / 12;
+    document.querySelector("#salario-mensual").value = salarioMensualDelUsuario;
+  }
   return false;
 }
-
 
 
 

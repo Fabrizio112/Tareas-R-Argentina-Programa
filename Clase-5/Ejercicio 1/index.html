@@ -13,6 +13,7 @@
 <body>
 
     <body>
+
         <div class="container bg-danger text-center p-4 my-5">
             <div class="encabezado">
                 <h1 class="text-uppercase mb-3">Bienvenido!</h1>
@@ -20,26 +21,31 @@
             <form>
                 <label class="form-label fw-bolder text-decoration-underline" for="">Primer Nombre:</label><br>
                 <input class="form-control text-center fs-5" type="text" id="firstname-user"
-                    placeholder="Ingresa tu Primer Nombre">
+                    placeholder="Ingresa tu Primer Nombre" name="primerNombre">
                 <br>
                 <label class="form-label fw-bolder text-decoration-underline" for="">Segundo Nombre:</label><br>
                 <input class="form-control text-center fs-5" type="text" id="secondname-user"
-                    placeholder="Ingresa tu segundo Nombre">
+                    placeholder="Ingresa tu segundo Nombre" name="segundoNombre">
                 <br>
                 <label class="form-label fw-bolder text-decoration-underline" for="">Apellido:</label><br>
                 <input class="form-control text-center fs-5" type="text" id="surname-user"
-                    placeholder="Ingresa tu apellido">
+                    placeholder="Ingresa tu apellido" name="apellido">
                 <br>
                 <label class="form-label fw-bolder text-decoration-underline" for="">Edad</label><br>
-                <input class="form-control text-center fs-5" type="number" id="age-user" placeholder="Ingresa tu edad">
+                <input class="form-control text-center fs-5" type="number" id="age-user" name="edad"
+                    placeholder="Ingresa tu edad">
                 <br>
                 <button class="btn btn-outline-light fs-4 px-5 me-3" id="boton">Enviar</button>
                 <button class="btn btn-outline-light fs-4 px-5" type="reset">Resetear</button>
             </form>
+            <div id="contenedor-errores" class="d-none">
 
+            </div>
 
         </div>
         <script src="index.js"></script>
+        <script src="pruebas.js"></script>
+        <script src="funcionesValidacion.js"></script>
     </body>
 
 </html>
