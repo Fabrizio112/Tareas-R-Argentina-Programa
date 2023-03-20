@@ -2,7 +2,7 @@ describe('Class 5 Exercise 1 TESTS', () => {
 
     describe('Basic Working Test', () => {
         beforeEach('Visit URL ', () => {
-            cy.visit('http://192.168.100.28:8080/Clase-5/Ejercicio%201/')
+            cy.visit('http://127.0.0.1:8080/Clase-5/Ejercicio%201/')
         })
         it('Test if the formulary is working good', () => {
             cy.get('#firstname-user').type("Fabrizio")
@@ -27,7 +27,7 @@ describe('Class 5 Exercise 1 TESTS', () => {
     })
     describe('A lot of more difficult Test', () => {
         beforeEach('Visit URL ', () => {
-            cy.visit('http://192.168.100.28:8080/Clase-5/Ejercicio%201/')
+            cy.visit('http://127.0.0.1:8080/Clase-5/Ejercicio%201/')
         })
         it('Test Error', () => {
             cy.get('#firstname-user').type(".");
